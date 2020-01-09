@@ -1,18 +1,20 @@
 <template>
-  <div class="smpl">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <Smpl msg="Welcome to Your Vue.js App"/>
+  <div class="home">
+    <Smpl></Smpl>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // @ is an alias to /src
 import Smpl from '@/components/Smpl.vue'
+import {Component, Vue} from 'vue-property-decorator';
 
-export default {
-  name: 'smpl',
+@Component({
   components: {
     Smpl
   }
+})
+
+export default class Home extends Vue{
 }
 </script>

@@ -1,20 +1,12 @@
 <template>
-  <div class="smpl">
-    <input v-model="message" placeholder="edit me">
-    <h1>{{ msg }}</h1>
-    <p>{{ message }}</p>
-  </div>
+  <button> MyBuuuuton</button>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import {Component, Vue} from 'vue-property-decorator';
 
-export default Vue.extend({
-  name: 'Smpl',
-  props: {
-    msg: String,
-  },
-});
+@Component
+export default class MyButton extends Vue{} 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
