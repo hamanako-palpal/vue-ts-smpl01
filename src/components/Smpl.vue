@@ -1,5 +1,5 @@
 <template>
-  <button> MyBuuuuton</button>
+  <button @click="onClick"> {{getName}}>>>>>{{getSome}}</button>
 </template>
 
 <script lang="ts">
@@ -7,8 +7,18 @@ import {Component, Vue} from 'vue-property-decorator';
 
 @Component
 export default class MyButton extends Vue{
-  
-} 
+  name = 'Button';
+  some = false;
+  get getName() {
+    return this.name;
+  }
+  get getSome() {
+    return this.some;
+  }
+  onClick() {
+    this.some = true;
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
