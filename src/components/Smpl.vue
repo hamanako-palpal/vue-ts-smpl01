@@ -16,7 +16,7 @@ export default class MyButton extends Vue{
     return this.some;
   }
   onClick() {
-    this.some = true;
+    this.some = !this.some;
   }
 }
 </script>
