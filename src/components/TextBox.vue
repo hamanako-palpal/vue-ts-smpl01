@@ -1,21 +1,17 @@
 <template>
     <div>
-        <input v-model="message" placeholder="edit me">
+        <!-- <input v-model="message" placeholder="edit me"> -->
         <p>Message is: {{ message }}</p>
     </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
-import { watch } from 'fs';
+import {Component, Vue, Prop} from 'vue-property-decorator';
 
 @Component
 export default class TextBox extends Vue{
-  text = '';
-  @watch('text')
-  private change(val: string, oldVal: string) {
-      
-  }
+
+  @Prop({type: String, required: true})private message!: string;
 
 }
 </script>

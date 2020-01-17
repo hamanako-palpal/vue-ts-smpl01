@@ -1,11 +1,19 @@
 <template>
-  <button @click="onClick"> {{getName}}>>>>>{{getSome}}</button>
+  <div>
+    <button @click="onClick"> push</button>
+    <TextBox :messege="this.name"></TextBox>
+  </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
+import TextBox from '@/components/TextBox.vue';
 
-@Component
+@Component({
+  components: {
+    TextBox,
+  },
+})
 export default class MyButton extends Vue{
   name = 'Button';
   some = false;
@@ -16,6 +24,7 @@ export default class MyButton extends Vue{
     return this.some;
   }
   onClick() {
+    this.name += this.some; 
     this.some = !this.some;
   }
 }
