@@ -1,18 +1,16 @@
 <template>
-    <div>
-        <!-- <input v-model="message" placeholder="edit me"> -->
+    <div class="home">
         <p>Message is: {{ message }}</p>
     </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue, Prop} from 'vue-property-decorator';
+  import {Component, Prop, Vue} from 'vue-property-decorator';
 
-@Component
-export default class TextBox extends Vue{
+  @Component
+  export default class TextBox extends Vue{
 
-  @Prop({type: String, required: true})private message!: string;
-
+    @Prop({default: 'aso'}) message!: string;
 }
 </script>
 

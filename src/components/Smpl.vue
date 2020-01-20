@@ -1,21 +1,18 @@
 <template>
   <div>
-    <button @click="onClick"> push</button>
-    <TextBox :messege="this.name"></TextBox>
+    <!-- <input v-model="txt" placeholder={{ messege }}> -->
+    <button @click="onClick">push</button>
   </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
+import {Component, Prop, Vue} from 'vue-property-decorator';
 import TextBox from '@/components/TextBox.vue';
 
-@Component({
-  components: {
-    TextBox,
-  },
-})
+@Component
 export default class MyButton extends Vue{
-  name = 'Button';
+
+  @Prop({default: ''}) name!: string;
   some = false;
   get getName() {
     return this.name;
@@ -26,6 +23,7 @@ export default class MyButton extends Vue{
   onClick() {
     this.name += this.some; 
     this.some = !this.some;
+    alert(this.name);
   }
 }
 </script>
