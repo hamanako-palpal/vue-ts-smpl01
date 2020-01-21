@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <!-- <input v-model="txt" placeholder={{ messege }}> -->
-    <button @click="onClick">push</button>
+  <div class="home">
+    <!-- <button @click="onClick">push</button> -->
+    <h1></h1>
   </div>
 </template>
 
@@ -9,10 +9,15 @@
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import TextBox from '@/components/TextBox.vue';
 
-@Component
+@Component({
+  components: {TextBox},
+})
 export default class MyButton extends Vue{
 
   @Prop({default: ''}) name!: string;
+
+  @Emit() public input(value: string) {}
+
   some = false;
   get getName() {
     return this.name;
@@ -20,6 +25,10 @@ export default class MyButton extends Vue{
   get getSome() {
     return this.some;
   }
+  set localName(value: string) {
+    this.input(value);
+  }
+
   onClick() {
     this.name += this.some; 
     this.some = !this.some;
