@@ -1,38 +1,30 @@
 <template>
   <div class="home">
-    <!-- <button @click="onClick">push</button> -->
-    <h1></h1>
+    <text-box v-model="myname"/>
+    <h1>ttt {{ name }}</h1>
   </div>
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 import TextBox from '@/components/TextBox.vue';
 
 @Component({
   components: {TextBox},
 })
-export default class MyButton extends Vue{
+export default class MyButton extends Vue {
 
-  @Prop({default: ''}) name!: string;
+  @Prop() name!: string;
 
-  @Emit() public input(value: string) {}
+  @Emit()
+  public input(value: string) {}
 
-  some = false;
-  get getName() {
+  get myname() {
     return this.name;
   }
-  get getSome() {
-    return this.some;
-  }
-  set localName(value: string) {
-    this.input(value);
-  }
 
-  onClick() {
-    this.name += this.some; 
-    this.some = !this.some;
-    alert(this.name);
+  set myname(value: string) {
+    this.input(value);
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <input type="text" v-model="txt" placeholder=""/>
+        <input type="text" v-model="txt"/>
     </div>
 </template>
 

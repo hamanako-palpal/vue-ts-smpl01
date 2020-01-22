@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Smpl :name="getText"></Smpl>
+    <Smpl v-model="getText"/>
   </div>
 </template>
 
@@ -17,6 +17,6 @@ import {Component, Vue} from 'vue-property-decorator';
 
 export default class Home extends Vue{
 
-  public getText: string = "some";
+  public getText = "some";
 }
 </script>
