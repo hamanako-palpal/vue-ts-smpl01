@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <input type="text" v-model="txt"/>
+        <button @onClick="act">tt</button>
     </div>
 </template>
 
@@ -10,16 +11,20 @@
   @Component
   export default class TextBox extends Vue{
 
-    @Prop({default: 'aso'}) message!: string;
+    @Prop() public value!: string;
 
     @Emit() public input(value: string) {}
 
     private get txt(): string {
-      return this.message;
+      return this.value;
     }
 
     private set txt(value: string) {
       this.input(value);
+    }
+
+    act() :void {
+      this.input("ioioio");
     }
 }
 </script>

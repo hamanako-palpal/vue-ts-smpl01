@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <text-box v-model="myname"/>
-    <h1>ttt {{ name }}</h1>
+    <ul id="aso">
+      <li v-for="item in mylist">
+        <p>{{item}}</p><br>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -12,19 +16,25 @@ import TextBox from '@/components/TextBox.vue';
 @Component({
   components: {TextBox},
 })
-export default class MyButton extends Vue {
+export default class Smpl extends Vue {
 
-  @Prop() name!: string;
+  list: string[] = [];
 
-  @Emit()
-  public input(value: string) {}
+  @Prop() value!: string;
+
+  @Emit() public input(value: string) {}
 
   get myname() {
-    return this.name;
+    this.list.push(this.value);
+    return this.value;
   }
 
   set myname(value: string) {
     this.input(value);
+  }
+
+  get mylist() {
+    return this.list;
   }
 }
 </script>
