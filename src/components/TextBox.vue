@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <input type="text" v-model="txt"/>
-        <button @onClick="act">tt</button>
+        <input type="text" ref="reftxt"/>
+        <button @click="act">{{value}}</button>
     </div>
 </template>
 
@@ -15,16 +15,9 @@
 
     @Emit() public input(value: string) {}
 
-    private get txt(): string {
-      return this.value;
-    }
-
-    private set txt(value: string) {
-      this.input(value);
-    }
-
     act() :void {
-      this.input("ioioio");
+      var reft: HTMLInputElement = this.$refs.reftx as HTMLInputElement;
+      this.input(reft.value);
     }
 }
 </script>

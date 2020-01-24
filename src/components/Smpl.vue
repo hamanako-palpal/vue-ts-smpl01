@@ -1,10 +1,8 @@
 <template>
   <div class="home">
-    <text-box v-model="myname"/>
-    <ul id="aso">
-      <li v-for="item in mylist">
-        <p>{{item}}</p><br>
-      </li>
+    <text-box @input="myname" v-model="myname"/>
+    <ul id="aso" v-for="item in mylist">
+      <li>{{val}}</li>
     </ul>
   </div>
 </template>
@@ -24,13 +22,12 @@ export default class Smpl extends Vue {
 
   @Emit() public input(value: string) {}
 
-  get myname() {
-    this.list.push(this.value);
+  get val(): string {
     return this.value;
   }
 
-  set myname(value: string) {
-    this.input(value);
+  public myname() {
+    this.list.push(this.value);
   }
 
   get mylist() {
