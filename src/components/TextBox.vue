@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <input type="text" ref="reftxt"/>
-        <button @click="act">{{value}}</button>
+        <input type="text" v-model="value"/>
+        <button @click="act">{{this.btnname}}</button>
     </div>
 </template>
 
@@ -11,13 +11,22 @@
   @Component
   export default class TextBox extends Vue{
 
-    @Prop() public value!: string;
+    private value!: string;
+
+    @Prop({default: 'aso'}) private btnname!: string;
 
     @Emit() public input(value: string) {}
 
+    get val(): string {
+      return this.btnname;
+    }
+
     act() :void {
-      var reft: HTMLInputElement = this.$refs.reftx as HTMLInputElement;
-      this.input(reft.value);
+
+      var t = this.value;
+      this.value = "";
+
+      this.input(t);
     }
 }
 </script>

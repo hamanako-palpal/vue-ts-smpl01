@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <text-box @input="myname" v-model="myname"/>
-    <ul id="aso" v-for="item in mylist">
-      <li>{{val}}</li>
+    <text-box :btnname="sendname" @input="ipt => myname(ipt)"/>
+    <ul v-for="item in mylist">
+      <li>{{item}}</li>
     </ul>
   </div>
 </template>
@@ -18,16 +18,15 @@ export default class Smpl extends Vue {
 
   list: string[] = [];
 
-  @Prop() value!: string;
+  @Prop() private value!: string;
 
-  @Emit() public input(value: string) {}
+  // @Emit() public input(value: string) {}
 
-  get val(): string {
-    return this.value;
-  }
+  public sendname: string =this.value;
+  
 
-  public myname() {
-    this.list.push(this.value);
+  public myname(ipt: string) {
+    this.list.push(ipt);
   }
 
   get mylist() {
